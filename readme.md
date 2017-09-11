@@ -2,7 +2,8 @@
 
 ### Problem Statement
 
-
+In this case study: Activity Stream Step 1, we will develope a monolithic application which will possibly get the data/message from the a client using a form, identify the circle for the data , persist it. 
+See the message as part of the user’s inbox. a fairly hardcoded implementation
 
 ### Expected solution
 
