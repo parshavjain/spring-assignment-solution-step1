@@ -1,4 +1,4 @@
-## Seed code - Boilerplate for step 2 - Activity Stream Assignment
+## Seed code - Boilerplate for step 1 - Activity Stream Assignment
 
 ### Problem Statement
 
@@ -43,13 +43,13 @@ The folders and files you see in this repositories, is how it is expected to be 
 
 2. Navigate to assignment-solution-step6 folder
 
-    `cd assignment-solution-step6`
+    `cd assignment-solution-step1`
 
 3. Remove its remote or original reference
 
      `git remote rm origin`
 
-4. Create a new repo in gitlab named `assignment-solution-step6` as private repo
+4. Create a new repo in gitlab named `assignment-solution-step1` as private repo
 
 5. Add your new repository reference as remote
 
