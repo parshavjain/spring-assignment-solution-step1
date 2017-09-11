@@ -39,7 +39,7 @@ The folders and files you see in this repositories, is how it is expected to be 
 
 1. Clone the base boilerplate in the folder **assignment-solution-step1** of your local machine
      
-    `git clone https://gitlab-dev.stackroute.in/datamunger-java/step-6-boilerplate.git assignment-solution-step1`
+    `git clone https://gitlab-dev.stackroute.in/activity-stream-java/step1-boilerplate.git assignment-solution-step1`
 
 2. Navigate to assignment-solution-step6 folder
 
