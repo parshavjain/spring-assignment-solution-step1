@@ -1,8 +1,12 @@
 ## Seed code - Boilerplate for step 1 - Activity Stream Assignment
 
+### Assignment Step Description
+
 ### Problem Statement
 
-In this case study: Activity Stream Step 1, we will develope a monolithic application which will possibly get the data/message from the a client using a form, identify the circle for the data , persist it. 
+In this case study: Activity Stream Step 1, we will develop a monolithic application which will get the sender name, message from the user using a form (JSP/HTML), 
+persist in MySQL Database and display all messages with their sender name, message content, timestamp of posting in a reverse chronological order (latest message first).
+
 See the message as part of the user’s inbox. a fairly hardcoded implementation
 
 ### Expected solution
