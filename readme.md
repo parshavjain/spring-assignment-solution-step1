@@ -12,8 +12,8 @@ In this case study: Activity Stream Step 1, we will develop a monolithic applica
 persist in MySQL Database and display all messages with their sender name, message content, timestamp of posting in a reverse chronological order (latest message first).
 
 ### Expected solution
-
 ![alt](https://stackroute.slack.com/files/U4LGDD8RZ/F781GLQE7/oie_eqw5srly35ua.png)
+
 
 ### Following are the broad tasks:
 1. Display the list of existing messages from the database. Each message should contain senderName, message, and timestamp. 
