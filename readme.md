@@ -2,7 +2,7 @@
 
 ### Assignment Step Description
 
-As a first step in building our Activity Stream messaging application, we will create a monolithic application. 
+As a first step in building our Activity Stream application, we will create a monolithic application. 
 **A monolithic application describes a single-tiered software application in which the user interface and data access code are combined into a single program from a single platform. 
 A monolithic application is self-contained and independent from other computing applications.**
 
@@ -12,7 +12,7 @@ In this case study: Activity Stream Step 1, we will develop a monolithic applica
 persist in MySQL Database and display all messages with their sender name, message content, timestamp of posting in a reverse chronological order (latest message first).
 
 ### Expected solution
-
+https://6iee.com/data/uploads/30/717208.jpg
 ### Following are the broad tasks:
 
 ### Project structure
