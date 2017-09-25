@@ -12,7 +12,8 @@ In this case study: Activity Stream Step 1, we will develop a monolithic applica
 persist in MySQL Database and display all messages with their sender name, message content, timestamp of posting in a reverse chronological order (latest message first).
 
 ### Expected solution
-https://icons.iconarchive.com/icons/wwalczyszyn/android-style-honeycomb/256/Messages-icon.png
+![alt](https://icons.iconarchive.com/icons/wwalczyszyn/android-style-honeycomb/256/Messages-icon.png)
+
 ### Following are the broad tasks:
 
 ### Project structure
