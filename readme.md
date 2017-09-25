@@ -13,6 +13,7 @@ persist in MySQL Database and display all messages with their sender name, messa
 
 ### Expected solution
 ![alt](https://icons.iconarchive.com/icons/wwalczyszyn/android-style-honeycomb/256/Messages-icon.png)
+![alt](https://stackroute.slack.com/files/U4LGDD8RZ/F781GLQE7/oie_eqw5srly35ua.png)
 
 ### Following are the broad tasks:
 1. Display the list of existing messages from the database. Each message should contain senderName, message, and timestamp. 
