@@ -12,7 +12,7 @@ In this case study: Activity Stream Step 1, we will develop a monolithic applica
 persist in MySQL Database and display all messages with their sender name, message content, timestamp of posting in a reverse chronological order (latest message first).
 
 ### Expected solution
-![alt](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXNrx62u9ZnsFE3MQq_4NupYISBG47b9GNyi6oZXsPoUFqcoI8Rg)
+![alt](https://s3.ap-south-1.amazonaws.com/stackroute/oie_eqW5sRly35UA.png)
 
 
 ### Following are the broad tasks:
