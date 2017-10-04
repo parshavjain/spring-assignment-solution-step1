@@ -43,7 +43,7 @@ public class ActivityStreamTest {
 	public void testSendMessages() {
 		
 		Message message=new Message();
-		message.setSenderId("John");
+		message.setSenderName("John");
 		message.setMessage("Sample message");
 		message.setPostedDate();
 		
@@ -59,7 +59,7 @@ public class ActivityStreamTest {
 		boolean found=false;
 		for(Message msg:messages)
 		{
-			if(msg.getSenderId().equals("John") && msg.getMessage().equals("Sample message")) {
+			if(msg.getSenderName().equals("John") && msg.getMessage().equals("Sample message")) {
 				found=true;
 			}
 		}
