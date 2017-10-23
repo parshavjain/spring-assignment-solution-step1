@@ -8,6 +8,7 @@ A monolithic application is built as a single unit. Enterprise Applications are 
 1. A database (consisting of many tables usually in a relational database management system), 
 2. A client-side user interface (consisting of HTML pages and/or JavaScript running in a browser), 
 3. A server-side application. 
+
 This server-side application will handle HTTP requests, execute some domain specific logic, retrieve and update data from the database, and populate the HTML views to be sent to the browser. It is a monolith – a single logical executable. 
 To make any alterations to the system, a developer must build and deploy an updated version of the server-side application.
 
