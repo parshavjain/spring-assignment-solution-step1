@@ -3,8 +3,12 @@
 ### Assignment Step Description
 
 As a first step in building our Activity Stream application, we will create a monolithic application. 
-**A monolithic application describes a single-tiered software application in which the user interface and data access code are combined into a single program from a single platform. 
-A monolithic application is self-contained and independent from other computing applications.**
+** A monolithic application is built as a single unit. Enterprise Applications are built in three parts: 
+1. A database (consisting of many tables usually in a relational database management system), 
+2. A client-side user interface (consisting of HTML pages and/or JavaScript running in a browser), 
+3. A server-side application. 
+This server-side application will handle HTTP requests, execute some domain specific logic, retrieve and update data from the database, and populate the HTML views to be sent to the browser. It is a monolith – a single logical executable. 
+To make any alterations to the system, a developer must build and deploy an updated version of the server-side application.**
 
 ### Problem Statement
 
