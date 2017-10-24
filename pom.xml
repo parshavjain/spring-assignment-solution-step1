@@ -9,14 +9,14 @@
 	<url>http://maven.apache.org</url>
 	<dependencies>
 
-		<!-- dependency for JUNIT 4 to be added -->
+		<!-- dependency for JUNIT 4 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Dependency for hibernate entity manager to be added -->
+		<!-- Dependency for hibernate entity manager -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -51,6 +51,10 @@
 			<version>4.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- Dependency for jaxb-api to be added(if using JDK9) -->
+		
+		<!-- Dependency for jaxb-impl to be added(if using JDK9) -->
 
 
 	</dependencies>
