@@ -23,7 +23,7 @@ persist in MySQL Database and display all messages with their sender name, messa
 
 ### Following are the broad tasks:
 1. Display the list of existing messages from the database. Each message should contain senderName, message, and timestamp. 
-2. send a message which should contain the senderName, message, and timestamp.
+2. Send a message which should contain the senderName, message, and timestamp.
 3. For hibernate configuration we require the following: Dialect,driver class,username,password,database URL, mapping classes.
 4. Build the sessionFactory object based on the parameters from hibernate.cfg.xml file. Also, handle exception if the session factory object can't be created.
 
