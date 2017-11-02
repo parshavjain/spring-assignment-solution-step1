@@ -11,51 +11,42 @@ import org.junit.Test;
 
 import com.stackroute.activitystream.config.HibernateUtil;
 import com.stackroute.activitystream.model.Message;
+import com.stackroute.activitystream.repository.MessageRepository;
 
 public class ActivityStreamTest {
 
 	Session session=null;
+	MessageRepository messageRepository;
 	
 	
 	@Before
 	public void setup() {
-		session=HibernateUtil.getSessionFactory().openSession();
+		
+		messageRepository=new MessageRepository();
 		
 	}
 	
 	@After
 	public void teardown() {
 		
-		session.close();
-		
 	}
 	
 	@Test
 	public void testGetListOfMessages() {
-		session.beginTransaction();
-		Query query = session.createQuery("from Message order by postedDate desc");
-		List<Message> messages= query.list();
-		session.getTransaction().commit();
-		assertNotNull("Retrieval of messages failed.",messages);
+		assertNotNull("Retrieval of messages failed.",messageRepository.getAllMessages());
 	}
 	
 	@Test
 	public void testSendMessages() {
-		
+		session=HibernateUtil.getSessionFactory().openSession();
 		Message message=new Message();
 		message.setSenderName("John");
 		message.setMessage("Sample message");
 		message.setPostedDate();
 		
-		session.beginTransaction();
-		session.save(message);
-		session.getTransaction().commit();
+		messageRepository.sendMessage(message);
 		
-		session.beginTransaction();
-		Query query = session.createQuery("from Message order by postedDate desc");
-		List<Message> messages= query.list();
-		session.getTransaction().commit();
-		
+		List<Message> messages=messageRepository.getAllMessages();
 		boolean found=false;
 		for(Message msg:messages)
 		{
