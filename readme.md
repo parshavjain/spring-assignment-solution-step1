@@ -38,7 +38,8 @@ persist in MySQL Database and display all messages with their sender name, messa
     Step 5: Specify Root config class in WebApplicationInitializer.java file.
     Step 6: Build the sessionFactory object based on the parameters from hibernate.cfg.xml file in HibernateUtil.java file.
     Step 7: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
-    Step 8: In MessageRepository.java , create a hibernate session from HibernateUtil, as well create a method to save messages in database.
+    Step 8: In MessageRepository.java , create a hibernate session from HibernateUtil, as well create a method to save messages in database. 
+                Also Write a method which is used to retrieve all messages from database
     Step 9: Run the JUnit testcases for MessageRepository (MessageRepositoryTest.java)
     Step 10: Annotate the MessageController.java with @Controller annotation, also define a handler method to read the existing messages from the database, 
                 and to read the senderName and message from requested parameters and save the message in the message table in the database.
