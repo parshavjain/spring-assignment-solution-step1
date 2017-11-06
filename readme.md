@@ -39,6 +39,8 @@ persist in MySQL Database and display all messages with their sender name, messa
     Step 6: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
     Step 7: Annotate the MessageController.java file with @Controller annotation, also define a handler method to read the existing messages from the database, 
         and to read the senderName and message from requested parameters and save the message in the message table in the database.
+    Step 8: Design a form with with 2 text boxes (one for sender name and other for Message) and a submit button. 
+                A table which shows Senders name, Message and the message posted date.
 
 ### Project structure
 
