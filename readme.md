@@ -29,10 +29,10 @@ persist in MySQL Database and display all messages with their sender name, messa
 
 ### Steps to be followed :
 
-    Step 1: Clone the boilerplate in a specific folde in your local machine and import the same in your eclipse STS.
+    Step 1: Clone the boilerplate in a specific folder in your local machine and import the same in your eclipse STS.
     Step 2: Configure hibernate.cfg.xml file with the appropriate database's Username and Password, also create a schema which is mentioned as in hibernate.connection.url property.
         Note: Ensure the port number mentioned in the URL property and your database port number are same.
-    Step 3: In ApplicationContextConfig.java add the required annotations and base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
+    Step 3: In ApplicationContextConfig.java add the required annotations, as well as add base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
     Step 4: Specify Root config class in WebApplicationInitializer.java file.
     Step 5: Build the sessionFactory object based on the parameters from hibernate.cfg.xml file in HibernateUtil.java file.
     Step 6: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
