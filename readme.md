@@ -30,16 +30,20 @@ persist in MySQL Database and display all messages with their sender name, messa
 ### Steps to be followed :
 
     Step 1: Clone the boilerplate in a specific folder in your local machine and import the same in your eclipse STS.
-    Step 2: Configure hibernate.cfg.xml file with the appropriate database's Username and Password, also create a schema which is mentioned as in hibernate.connection.url property.
+    Step 2: Add relevant dependencies in pom.xml file. 
+        Note: Read the comments mentioned in pom.xml file for identifying the relevant dependencies.
+    Step 3: Configure hibernate.cfg.xml file with the appropriate database's Username and Password, also create a schema which is mentioned as in hibernate.connection.url property.
         Note: Ensure the port number mentioned in the URL property and your database port number are same.
-    Step 3: In ApplicationContextConfig.java add the required annotations, as well as add base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
-    Step 4: Specify Root config class in WebApplicationInitializer.java file.
-    Step 5: Build the sessionFactory object based on the parameters from hibernate.cfg.xml file in HibernateUtil.java file.
-    Step 6: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
-    Step 7: In MessageRepository.java , create a hibernate session from HibernateUtil, as well create a method to save messages in database.
-    Step 8: Annotate the MessageController.java with @Controller annotation, also define a handler method to read the existing messages from the database, 
+    Step 4: In ApplicationContextConfig.java add the required annotations, as well as add base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
+    Step 5: Specify Root config class in WebApplicationInitializer.java file.
+    Step 6: Build the sessionFactory object based on the parameters from hibernate.cfg.xml file in HibernateUtil.java file.
+    Step 7: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
+    Step 8: In MessageRepository.java , create a hibernate session from HibernateUtil, as well create a method to save messages in database.
+    Step 9: Run the JUnit testcases for MessageRepository (ActivityStreamTest.java)
+    Step 10: Annotate the MessageController.java with @Controller annotation, also define a handler method to read the existing messages from the database, 
                 and to read the senderName and message from requested parameters and save the message in the message table in the database.
-    Step 9: Design a form with 2 text boxes (one for sender name and other for Message) and a submit button. 
+    Step 11: Run the MockMVCTest cases (MessageControllerTest.java)
+    Step 12: Design a form with 2 text boxes (one for sender name and other for Message) and a submit button. 
                 A table which shows Senders name, Message and the Message posted date.
 
 ### Project structure
