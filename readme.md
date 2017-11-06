@@ -17,6 +17,7 @@ To make any alterations to the system, a developer must build and deploy an upda
 In this case study: Activity Stream Step 1, we will develop a monolithic application which will get the sender name, message from the user using a form (JSP/HTML), 
 persist in MySQL Database and display all messages with their sender name, message content, timestamp of posting in a reverse chronological order (latest message first).
 
+**Note: For detailed clarity on the class files, kindly go thru the Project Structure**
 ### Expected solution
 ![alt](https://s3.ap-south-1.amazonaws.com/stackroute/oie_eqW5sRly35UA.png?response-content-disposition=inline&X-Amz-Security-Token=AgoGb3JpZ2luEJL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmFwLXNvdXRoLTEigAKGjZseNxIh5O0JI7o8xkNZQcHrnOgSPN3BPn8%2FlcDjp5Az2mhEi2k3i1CFpRYfwvGPUCTdKv5eJCibhD1FAfC1y5DA5JM07d%2Bn%2FHohz%2F%2Bn1%2BTpofBfETTCwYwcnku0a42bUaq7WEt83TcQwiTv3yvJM1Ls9GL4SOywx5Q10YCgixTCmibCldVZrwEfW9dYXaV1bMniZSHXjwMHbl%2BjiqhGpoPMGVYYqZ9%2Fp0Eu6xlvY69xGfQz7zfhnsbB7LyS0No4Cewgzo%2F%2Fd5toZvYB2L9bVM33U7OrvuCdBSSkoikkd%2Fi77vRw%2FvwxO6wNp8GkcAZ6jE66pyQF8xXa4bwYKZt4KvsDCLb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMDc5NTU0MTAzMjIxIgzfN%2Fxjan3dyM9zgckqzwNgA4wMVRH56MvHmT8zF8tdHqnzQstJZkvPlQDWo%2FMS4bwafx1YOI02P5BqAIyPF2J3%2BqzD15DIpnlpT7X2qaXAEiCJGTFAPW3YbFVmIyW18hEvFGEj%2F0uKhofchMz7r8XTry88bwSEvggHrBB8F6yac6XJvQV2Wh94YEiqlA%2F8AYGZwpmWQNbpRGID8B0iYN4fTX1t51QsyRdMXtN7sP4bEzlcfB7HwZ%2B%2Ff6Wrsc5lWP13wZWcR4eKRMezF2kRUJEPDnBc0gnVHIItDtbTqGiVwgtPe4WKmlO9fkLuyYFZdjr58xb855GpoFD7%2F0ETt%2BdEtFiw5c7p58qqnKYyFrRKSAQ0CDMj1rAjZhtHpbXrnzcylJRTrzrYznd0aoBNKCnB%2FshB3GmENBdC%2BJn2BW3FMvsdzd7YxITROFhTQbEQUF1vfQ5gEH7YQBU9MubgRyAY%2Fcj9PqbvT%2Bsgqh%2BnirQLMHCwZUGEBkwMfxgiaTXvrtiZr8TcvgtivqWDmx3STwm01puC2DFF%2BlfBfIsHebgNB2eOhJoGrTcq4F2YWDRtG9By9t2stdkqGKCoLSgAbpz%2BsUawsdUsGMFgTBfqzgABL%2F6oZEJZc8Z75sFYQD5cMNvf2s8F&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20171030T055114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAIFU5LZM24L23AVAA%2F20171030%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=fbd4e6d35bbeafd41d7978a47c6a15d7b1eb48f78b419d89e4bf957d5a9106f3)
 
@@ -27,6 +28,18 @@ persist in MySQL Database and display all messages with their sender name, messa
 3. For hibernate configuration we require the following: Dialect,driver class,username,password,database URL, mapping classes.
 4. Build the sessionFactory object based on the parameters from hibernate.cfg.xml file. Also, handle exception if the session factory object can't be created.
 
+### Steps to be followed :
+
+Step 1: Clone the boilerplate in a specific folde in your local machine and import the same in your eclipse STS.
+Step 2: Configure hibernate.cfg.xml file with the appropriate database's Username and Password, also create a schema which is mentioned as in hibernate.connection.url property.
+        **Note: Ensure the port number mentioned in the URL property and your database port number are same.**
+Step 3: In ApplicationContextConfig.java file add the required annotations and base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
+Step 4: Specify Root config class in WebApplicationInitializer.java file.
+Step 5: Build the sessionFactory object based on the parameters from hibernate.cfg.xml file in HibernateUtil.java file.
+Step 6: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
+Step 7: Annotate the MessageController.java file with @Controller annotation, also define a handler method to read the existing messages from the database, 
+        and to read the senderName and message from requested parameters and save the message in the message table in the database.
+
 ### Project structure
 
 The folders and files you see in this repositories, is how it is expected to be in projects, which are submitted for automated evaluation by Hobbes
@@ -35,20 +48,24 @@ The folders and files you see in this repositories, is how it is expected to be 
 	|
 	├──src/main
 	|   └── com.stackroute.activitystream.config	           
-	|	        └── ApplicationContextConfig.java     // This class will contain the application-context for the application.
-	|	        └── HibernateUtil.java                // This class build the sessionFactory object based on the parameters.
-	|	        └── WebApplicationInitializer.java    // This class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer class.
+	|	        └── ApplicationContextConfig.java   // This class will contain the application-context for the application.
+	|	        └── HibernateUtil.java              // This class build the sessionFactory object based on the parameters.
+	|	        └── WebApplicationInitializer.java  // This class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer class.
 	|   └── com.stackroute.activitystream.controller
-	|		    └── AppController.java 		         // This class is used to control all the transactions with the database.
+	|		    └── MessageController.java 		    // This class is used to control all the transactions with the database.
 	|   └── com.stackroute.activitystream.model
 	|		    └── Message.java                    // The class will be acting as the data model for the message Table in the database. 
+	|   └── com.stackroute.activitystream.repository
+	|		    └── MessageRepository.java          // This class contains the code for database interactions and methods of this class will be used by other 
+	|                                                        parts of the applications such as Controllers and Test Cases               
 	|   └── resources
 	|		    └── hibernate.cfg.xml               // This is a XML configuration file for database connectivity
 	|   └── webapp/WEB-INF/views
-	|		    └── index.jsp                   // A JSP page with a form in it, which will have textboxes for Sender Name and Message content along with a Send Submit button. 
+	|		    └── index.jsp                       // A JSP page with a form in it, which will have textboxes for Sender Name and Message content along with a Send Submit button. 
 	|
 	├──src/test/java/com/stackroute/activitystream/test
 	|		    └── ActivityStreamTest.java     // All your test cases are written using JUnit, these test cases can be run by selecting Run As -> JUnit Test
+	|		    └── MessageControllerTest.java  // This class contaions all the test cases related to Message Controller.
 	|
 	├── .settings
 	├── .classpath			                    // This file is generated automatically while creating the project in eclipse
