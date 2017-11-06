@@ -9,23 +9,38 @@ A monolithic application is built as a single unit. Enterprise Applications are 
 2. A client-side user interface (consisting of HTML pages and/or JavaScript running in a browser), 
 3. A server-side application. 
 
-This server-side application will handle HTTP requests, execute some domain specific logic, retrieve and update data from the database, and populate the HTML views to be sent to the browser. It is a monolith – a single logical executable. 
-To make any alterations to the system, a developer must build and deploy an updated version of the server-side application.
+This server-side application will handle HTTP requests, execute some domain specific logic, retrieve and update data from the database, and populate the HTML views to be sent to the browser. 
 
 ### Problem Statement
 
 In this case study: Activity Stream Step 1, we will develop a monolithic application which will get the sender name, message from the user using a form (JSP/HTML), 
 persist in MySQL Database and display all messages with their sender name, message content, timestamp of posting in a reverse chronological order (latest message first).
 
+**Note: For detailed clarity on the class files, kindly go thru the Project Structure**
 ### Expected solution
-![alt](https://s3.ap-south-1.amazonaws.com/stackroute/oie_eqW5sRly35UA.png?response-content-disposition=inline&X-Amz-Security-Token=AgoGb3JpZ2luEJL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmFwLXNvdXRoLTEigAKGjZseNxIh5O0JI7o8xkNZQcHrnOgSPN3BPn8%2FlcDjp5Az2mhEi2k3i1CFpRYfwvGPUCTdKv5eJCibhD1FAfC1y5DA5JM07d%2Bn%2FHohz%2F%2Bn1%2BTpofBfETTCwYwcnku0a42bUaq7WEt83TcQwiTv3yvJM1Ls9GL4SOywx5Q10YCgixTCmibCldVZrwEfW9dYXaV1bMniZSHXjwMHbl%2BjiqhGpoPMGVYYqZ9%2Fp0Eu6xlvY69xGfQz7zfhnsbB7LyS0No4Cewgzo%2F%2Fd5toZvYB2L9bVM33U7OrvuCdBSSkoikkd%2Fi77vRw%2FvwxO6wNp8GkcAZ6jE66pyQF8xXa4bwYKZt4KvsDCLb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMDc5NTU0MTAzMjIxIgzfN%2Fxjan3dyM9zgckqzwNgA4wMVRH56MvHmT8zF8tdHqnzQstJZkvPlQDWo%2FMS4bwafx1YOI02P5BqAIyPF2J3%2BqzD15DIpnlpT7X2qaXAEiCJGTFAPW3YbFVmIyW18hEvFGEj%2F0uKhofchMz7r8XTry88bwSEvggHrBB8F6yac6XJvQV2Wh94YEiqlA%2F8AYGZwpmWQNbpRGID8B0iYN4fTX1t51QsyRdMXtN7sP4bEzlcfB7HwZ%2B%2Ff6Wrsc5lWP13wZWcR4eKRMezF2kRUJEPDnBc0gnVHIItDtbTqGiVwgtPe4WKmlO9fkLuyYFZdjr58xb855GpoFD7%2F0ETt%2BdEtFiw5c7p58qqnKYyFrRKSAQ0CDMj1rAjZhtHpbXrnzcylJRTrzrYznd0aoBNKCnB%2FshB3GmENBdC%2BJn2BW3FMvsdzd7YxITROFhTQbEQUF1vfQ5gEH7YQBU9MubgRyAY%2Fcj9PqbvT%2Bsgqh%2BnirQLMHCwZUGEBkwMfxgiaTXvrtiZr8TcvgtivqWDmx3STwm01puC2DFF%2BlfBfIsHebgNB2eOhJoGrTcq4F2YWDRtG9By9t2stdkqGKCoLSgAbpz%2BsUawsdUsGMFgTBfqzgABL%2F6oZEJZc8Z75sFYQD5cMNvf2s8F&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20171030T055114Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAIFU5LZM24L23AVAA%2F20171030%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=fbd4e6d35bbeafd41d7978a47c6a15d7b1eb48f78b419d89e4bf957d5a9106f3)
-
-
+ A form containing two text fields one for Sender Name, other for Message and a submit button, below to this will be a tabular column with the fields Sender Name, Message and Timestamp (This will be published in reverse chronological order). 
+ When the user enters the Sender name, Message and clicks on submit button, it gets stored in the database and later render in tabular column.
+ 
 ### Following are the broad tasks:
 1. Display the list of existing messages from the database. Each message should contain senderName, message, and timestamp. 
-2. Send a message which should contain the senderName, message, and timestamp.
+2. Send a message which should contain the senderName, message.
 3. For hibernate configuration we require the following: Dialect,driver class,username,password,database URL, mapping classes.
 4. Build the sessionFactory object based on the parameters from hibernate.cfg.xml file. Also, handle exception if the session factory object can't be created.
+
+### Steps to be followed :
+
+    Step 1: Clone the boilerplate in a specific folde in your local machine and import the same in your eclipse STS.
+    Step 2: Configure hibernate.cfg.xml file with the appropriate database's Username and Password, also create a schema which is mentioned as in hibernate.connection.url property.
+        Note: Ensure the port number mentioned in the URL property and your database port number are same.
+    Step 3: In ApplicationContextConfig.java add the required annotations and base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
+    Step 4: Specify Root config class in WebApplicationInitializer.java file.
+    Step 5: Build the sessionFactory object based on the parameters from hibernate.cfg.xml file in HibernateUtil.java file.
+    Step 6: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
+    Step 7: In MessageRepository.java , create a hibernate session from HibernateUtil, as well create a method to save messages in database.
+    Step 8: Annotate the MessageController.java with @Controller annotation, also define a handler method to read the existing messages from the database, 
+                and to read the senderName and message from requested parameters and save the message in the message table in the database.
+    Step 9: Design a form with 2 text boxes (one for sender name and other for Message) and a submit button. 
+                A table which shows Senders name, Message and the Message posted date.
 
 ### Project structure
 
@@ -35,20 +50,25 @@ The folders and files you see in this repositories, is how it is expected to be 
 	|
 	├──src/main
 	|   └── com.stackroute.activitystream.config	           
-	|	        └── ApplicationContextConfig.java     // This class will contain the application-context for the application.
-	|	        └── HibernateUtil.java                // This class build the sessionFactory object based on the parameters.
-	|	        └── WebApplicationInitializer.java    // This class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer class.
+	|	        └── ApplicationContextConfig.java   // This class will contain the application-context for the application.
+	|	        └── HibernateUtil.java              // This class build the sessionFactory object based on the parameters.
+	|	        └── WebApplicationInitializer.java  // This class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer class.
 	|   └── com.stackroute.activitystream.controller
-	|		    └── AppController.java 		         // This class is used to control all the transactions with the database.
+	|		    └── MessageController.java 		    // This class is used to control all the transactions with the database.
 	|   └── com.stackroute.activitystream.model
 	|		    └── Message.java                    // The class will be acting as the data model for the message Table in the database. 
+	|   └── com.stackroute.activitystream.repository
+	|		    └── MessageRepository.java          // This class contains the code for database interactions and methods of this class will be used by other 
+	|                                                        parts of the applications such as Controllers and Test Cases               
 	|   └── resources
 	|		    └── hibernate.cfg.xml               // This is a XML configuration file for database connectivity
 	|   └── webapp/WEB-INF/views
-	|		    └── index.jsp                   // A JSP page with a form in it, which will have textboxes for Sender Name and Message content along with a Send Submit button. 
+	|		    └── index.jsp                       // A JSP page with a form and table in it, form will have textboxes for Sender Name and Message content along with a Send Submit button. 
+	|                                                   Table will contain three fields namely Sender's Name, Message, Posted date which will render all the informantion from the database.
 	|
 	├──src/test/java/com/stackroute/activitystream/test
 	|		    └── ActivityStreamTest.java     // All your test cases are written using JUnit, these test cases can be run by selecting Run As -> JUnit Test
+	|		    └── MessageControllerTest.java  // This class contaions all the test cases related to Message Controller.
 	|
 	├── .settings
 	├── .classpath			                    // This file is generated automatically while creating the project in eclipse
