@@ -19,7 +19,9 @@ persist in MySQL Database and display all messages with their sender name, messa
 
 **Note: For detailed clarity on the class files, kindly go thru the Project Structure**
 ### Expected solution
- A form containing two text fields one for Sender Name and other for Message, below to this will be a tabular column with the fields Sender Name, Message and Timestamp (This will be published in reverse chronological order)
+ A form containing two text fields one for Sender Name, other for Message and a submit button, below to this will be a tabular column with the fields Sender Name, Message and Timestamp (This will be published in reverse chronological order). 
+ When the user enters the Sender name, Message and enters the submit button, it gets stored the repository and later render in tabular column.
+ 
 ### Following are the broad tasks:
 1. Display the list of existing messages from the database. Each message should contain senderName, message, and timestamp. 
 2. Send a message which should contain the senderName, message, and timestamp.
