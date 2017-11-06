@@ -1,4 +1,4 @@
-package com.stackroute.activitystream.commander;
+package com.stackroute.activitystream.test;
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import com.stackroute.activitystream.config.HibernateUtil;
 import com.stackroute.activitystream.model.Message;
 import com.stackroute.activitystream.repository.MessageRepository;
 
-public class ActivityStreamTest {
+public class MessageRepositoryTest {
 
 	Session session=null;
 	MessageRepository messageRepository;
