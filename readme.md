@@ -19,11 +19,11 @@ persist in MySQL Database and display all messages with their sender name, messa
 **Note: For detailed clarity on the class files, kindly go thru the Project Structure**
 ### Expected solution
  A form containing two text fields one for Sender Name, other for Message and a submit button, below to this will be a tabular column with the fields Sender Name, Message and Timestamp (This will be published in reverse chronological order). 
- When the user enters the Sender name, Message and clicks on submit button, it gets stored the repository and later render in tabular column.
+ When the user enters the Sender name, Message and clicks on submit button, it gets stored in the database and later render in tabular column.
  
 ### Following are the broad tasks:
 1. Display the list of existing messages from the database. Each message should contain senderName, message, and timestamp. 
-2. Send a message which should contain the senderName, message, and timestamp.
+2. Send a message which should contain the senderName, message.
 3. For hibernate configuration we require the following: Dialect,driver class,username,password,database URL, mapping classes.
 4. Build the sessionFactory object based on the parameters from hibernate.cfg.xml file. Also, handle exception if the session factory object can't be created.
 
@@ -32,13 +32,14 @@ persist in MySQL Database and display all messages with their sender name, messa
     Step 1: Clone the boilerplate in a specific folde in your local machine and import the same in your eclipse STS.
     Step 2: Configure hibernate.cfg.xml file with the appropriate database's Username and Password, also create a schema which is mentioned as in hibernate.connection.url property.
         Note: Ensure the port number mentioned in the URL property and your database port number are same.
-    Step 3: In ApplicationContextConfig.java file add the required annotations and base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
+    Step 3: In ApplicationContextConfig.java add the required annotations and base packages to scan in @componentScan Annotation. Also define the bean for view resolver.
     Step 4: Specify Root config class in WebApplicationInitializer.java file.
     Step 5: Build the sessionFactory object based on the parameters from hibernate.cfg.xml file in HibernateUtil.java file.
     Step 6: In Message.java file (which is considered as Model class), annotate this class with @Entity Annotation and add @Id annotation to specify the primary key for the table.
-    Step 7: Annotate the MessageController.java file with @Controller annotation, also define a handler method to read the existing messages from the database, 
-        and to read the senderName and message from requested parameters and save the message in the message table in the database.
-    Step 8: Design a form with with 2 text boxes (one for sender name and other for Message) and a submit button. 
+    Step 7: In MessageRepository.java , create a hibernate session from HibernateUtil, as well create a method to save messages in database.
+    Step 8: Annotate the MessageController.java with @Controller annotation, also define a handler method to read the existing messages from the database, 
+                and to read the senderName and message from requested parameters and save the message in the message table in the database.
+    Step 9: Design a form with 2 text boxes (one for sender name and other for Message) and a submit button. 
                 A table which shows Senders name, Message and the Message posted date.
 
 ### Project structure
@@ -62,7 +63,8 @@ The folders and files you see in this repositories, is how it is expected to be 
 	|   └── resources
 	|		    └── hibernate.cfg.xml               // This is a XML configuration file for database connectivity
 	|   └── webapp/WEB-INF/views
-	|		    └── index.jsp                       // A JSP page with a form in it, which will have textboxes for Sender Name and Message content along with a Send Submit button. 
+	|		    └── index.jsp                       // A JSP page with a form and table in it, form will have textboxes for Sender Name and Message content along with a Send Submit button. 
+	|                                                   Table will contain three fields namely Sender's Name, Message, Posted date which will render all the informantion from the database.
 	|
 	├──src/test/java/com/stackroute/activitystream/test
 	|		    └── ActivityStreamTest.java     // All your test cases are written using JUnit, these test cases can be run by selecting Run As -> JUnit Test
