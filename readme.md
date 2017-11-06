@@ -42,7 +42,7 @@ persist in MySQL Database and display all messages with their sender name, messa
     Step 9: Run the JUnit testcases for MessageRepository (ActivityStreamTest.java)
     Step 10: Annotate the MessageController.java with @Controller annotation, also define a handler method to read the existing messages from the database, 
                 and to read the senderName and message from requested parameters and save the message in the message table in the database.
-    Step 11: Run the MockMVCTest cases (MessageControllerTest.java)
+    Step 11: Run the MockMVCTest cases for MessageController (MessageControllerTest.java)
     Step 12: Design a form with 2 text boxes (one for sender name and other for Message) and a submit button. 
                 A table which shows Senders name, Message and the Message posted date.
 
