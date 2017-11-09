@@ -89,7 +89,7 @@ The folders and files you see in this repositories, is how it is expected to be 
 
 1. Clone the base boilerplate in the folder **assignment-solution-step1** of your local machine
      
-    `git clone https://gitlab-wd.stackroute.in/activitystream/activitystream-step1-boilerplate.git assignment-solution-step1`
+    `git clone https://gitlab-wd.stackroute.in/stack_java_activitystream/activitystream-step1-boilerplate.git assignment-solution-step1`
 
 2. Navigate to assignment-solution-step6 folder
 
