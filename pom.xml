@@ -30,12 +30,25 @@
 		</dependency>
 
 		<!-- Dependency for Spring ORM to be added -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>5.0.2.RELEASE</version>
+		</dependency>
 
 		<!-- Dependency for apache commons dbcp to be added -->
-
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.2</version>
+		</dependency>
 
 		<!-- Dependency of MySQL connector for Java to be added -->
-
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
+		</dependency>
 
 		<!-- Dependency for JSTL -->
 		<dependency>
@@ -51,9 +64,9 @@
 			<version>4.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Dependency for jaxb-api to be added(if using JDK9) -->
-		
+
 		<!-- Dependency for jaxb-impl to be added(if using JDK9) -->
 
 		<!-- Dependency for Spring Test to be added -->
@@ -63,7 +76,7 @@
 			<version>4.3.10.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Dependency for mockito-all -->
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -86,7 +99,11 @@
 			<version>1.3</version>
 			<scope>test</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.2.Final</version>
+		</dependency>
 
 	</dependencies>
 	<build>
