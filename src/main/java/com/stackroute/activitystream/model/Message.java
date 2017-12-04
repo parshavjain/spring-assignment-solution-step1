@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 
 /*
@@ -42,7 +41,6 @@ public class Message {
 	 * Used to store senderName.
 	 */
 	@Column(name="SENDER_NAME", nullable = false)
-	@NotNull
 	String senderName;
 
 	/**
@@ -55,7 +53,6 @@ public class Message {
 	 * Used to store message.
 	 */
 	@Column(name="MESSAGE", nullable = false)
-	@NotNull
 	String message;
 
 	/**

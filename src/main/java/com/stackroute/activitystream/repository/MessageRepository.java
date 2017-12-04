@@ -31,10 +31,15 @@ public class MessageRepository {
 	 * This method is used to save messages in database
 	 */
 	public boolean sendMessage(Message message) {
-		if (null == message || null == session) {
+		session = getSession();
+		if (null == message || null == session
+				|| null == message.getSenderName()
+				|| null == message.getMessage()
+				|| message.getSenderName().isEmpty()
+				|| message.getMessage().isEmpty()) {
 			return false;
 		}
-		session = getSession();
+		
 		session.beginTransaction();
 		session.save(message);
 		session.getTransaction().commit();

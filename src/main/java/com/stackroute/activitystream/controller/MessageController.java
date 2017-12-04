@@ -1,23 +1,14 @@
 package com.stackroute.activitystream.controller;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.stackroute.activitystream.model.Message;
 import com.stackroute.activitystream.repository.MessageRepository;
@@ -38,16 +29,17 @@ public class MessageController {
 	 * should contain the senderName, message, and timestamp.
 	 * 
 	 */
-//	@RequestMapping(value = "/")
-//	public String welcomePage(Locale locale, Model model) {
-////		Date date = new Date();
-////		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-////
-////		String formattedDate = dateFormat.format(date);
-////
-////		model.addAttribute("serverTime", formattedDate);
-//		return "index";
-//	}
+	// @RequestMapping(value = "/")
+	// public String welcomePage(Locale locale, Model model) {
+	//// Date date = new Date();
+	//// DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
+	// DateFormat.LONG, locale);
+	////
+	//// String formattedDate = dateFormat.format(date);
+	////
+	//// model.addAttribute("serverTime", formattedDate);
+	// return "index";
+	// }
 
 	/*
 	 * Define a handler method which will read the senderName and message from
@@ -60,15 +52,18 @@ public class MessageController {
 	 * method should map to the URL "/sendMessage".
 	 */
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-	public String sendMessage(@Valid Message message, BindingResult bindingResult) {
+	public ModelAndView sendMessage(Message message) {
 		message.setPostedDate();
-		if(bindingResult.hasErrors()) {
-			return "redirect:/";
+		if (null == message.getSenderName() || null == message.getMessage() || message.getSenderName().isEmpty()
+				|| message.getMessage().isEmpty()) {
+			return new ModelAndView("index");
 		}
 
 		boolean isSaveSuccess = messageRepository.sendMessage(message);
-		
-		return "index";
+		if (isSaveSuccess) {
+			return new ModelAndView("redirect:/?success=true");
+		}
+		return new ModelAndView("redirect:/");
 	}
 
 	/*
@@ -77,12 +72,10 @@ public class MessageController {
 	 * ModelMap which is an implementation of Map for use when building model data
 	 * for use with views. it should map to the default URL i.e. "/"
 	 */
-	@RequestMapping(value = "/")
-	public String getAllMessages(Model model) {
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String getAllMessages(@RequestParam(required = false) boolean success, ModelMap modelMap) {
 		List<Message> messageList = messageRepository.getAllMessages();
-
-		model.addAttribute("messageList", messageList);
-
+		modelMap.put("messageList", messageList);
 		return "index";
 	}
 
