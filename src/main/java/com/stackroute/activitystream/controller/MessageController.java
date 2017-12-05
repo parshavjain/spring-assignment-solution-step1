@@ -1,5 +1,6 @@
 package com.stackroute.activitystream.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +62,10 @@ public class MessageController {
 		}
 
 		boolean isSaveSuccess = messageRepository.sendMessage(message);
-		if(isSaveSuccess) {
-			return new ModelAndView("redirect:/?success=true");
-		}
-		return new ModelAndView("redirect:/?success=false");
+//		if(isSaveSuccess) {
+			return new ModelAndView("redirect:/");
+//		}
+//		return new ModelAndView("redirect:/?success=false");
 	}
 
 	/*
@@ -76,7 +77,9 @@ public class MessageController {
 	@RequestMapping(value = "/")
 	public String getAllMessages(@RequestParam(required=false) boolean success, ModelMap modelMap) {
 		List<Message> messageList = messageRepository.getAllMessages();
-		 if(success) {
+		if(null != messageList
+				&& !messageList.isEmpty()) {
+			messageList.sort((message1, message2) -> message1.getSenderName().compareTo(message1.getSenderName()));
 			 modelMap.put("messageList", messageList);
 		 }
 		    return "index";

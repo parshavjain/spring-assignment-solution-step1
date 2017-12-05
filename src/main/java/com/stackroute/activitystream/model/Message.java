@@ -34,19 +34,19 @@ public class Message {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="ID", nullable = false)
+	@Column(name="messageId", nullable = false)
 	int messageId;
 
 	/**
 	 * Used to store senderName.
 	 */
-	@Column(name="SENDER_NAME", nullable = false)
+	@Column(name="senderName", nullable = false)
 	String sender;
 
 	/**
 	 * Used to store postedDate.
 	 */
-	@Column(name="CREATED_DATE", nullable = false)
+	@Column(name="postedDate", nullable = false)
 	Date postedDate;
 
 	/**
@@ -82,6 +82,21 @@ public class Message {
 	 */
 	public void setSenderName(String sender) {
 		this.sender = sender;
+	}
+	
+	/**
+	 * @return the senderName
+	 */
+	public String getSender() {
+		return getSenderName();
+	}
+
+	/**
+	 * @param senderName
+	 *            the senderName to set
+	 */
+	public void setSender(String sender) {
+		setSenderName(sender);
 	}
 
 	/**

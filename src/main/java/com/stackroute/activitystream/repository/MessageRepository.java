@@ -31,7 +31,6 @@ public class MessageRepository {
 	 * This method is used to save messages in database
 	 */
 	public boolean sendMessage(Message message) {
-		session = getSession();
 		if (null == message || null == session
 				|| null == message.getSenderName()
 				|| null == message.getMessage()
@@ -39,8 +38,13 @@ public class MessageRepository {
 				|| message.getMessage().isEmpty()) {
 			return false;
 		}
-		
-		session.beginTransaction();
+
+		if(!session.isOpen()) {
+			session = getSession();
+		}
+		if(!session.getTransaction().isActive()) {
+			session.beginTransaction();
+		}
 		session.save(message);
 		session.getTransaction().commit();
 		return true;
@@ -51,8 +55,13 @@ public class MessageRepository {
 	 */
 	public List<Message> getAllMessages() {
 		//Criteria criteria = session.createCriteria(Message.class);
-		session = getSession();
-		session.beginTransaction();
+		if(!session.isOpen()) {
+			session = getSession();
+		}
+		
+		if(!session.getTransaction().isActive()) {
+			session.beginTransaction();
+		}		
         List<Message> list = session.createQuery("from Message").list();
         return list;
 	}

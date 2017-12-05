@@ -11,7 +11,7 @@
 Submit button. Handle errors like empty fields -->
 	<h2>Send Messages..</h2>
 	<form name="sendMessage" method="post" action="sendMessage">
-		Sender Name: <input type="text" name="senderName"> 
+		Sender Name: <input type="text" name="sender"> 
 		Message: <input type="text" name="message">
 		 <input type="submit" value="submit">
 	</form>
@@ -23,7 +23,7 @@ Submit button. Handle errors like empty fields -->
 		<c:forEach items="${messageList}" var="message">
 			<tr>
 				<td>Message ID: <c:out value="${message.messageId}" /></td>
-				<td>Sender Name: <c:out value="${message.senderName}" /></td>
+				<td>Sender Name: <c:out value="${message.sender}" /></td>
 				<td>Posted Date: <c:out value="${message.postedDate}" /></td>
 				<td>Message: <c:out value="${message.message}" /></td>
 			</tr>
