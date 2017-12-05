@@ -29,17 +29,16 @@ public class MessageController {
 	 * should contain the senderName, message, and timestamp.
 	 * 
 	 */
-	// @RequestMapping(value = "/")
-	// public String welcomePage(Locale locale, Model model) {
-	//// Date date = new Date();
-	//// DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-	// DateFormat.LONG, locale);
-	////
-	//// String formattedDate = dateFormat.format(date);
-	////
-	//// model.addAttribute("serverTime", formattedDate);
-	// return "index";
-	// }
+//	@RequestMapping(value = "/")
+//	public String welcomePage(Locale locale, Model model) {
+////		Date date = new Date();
+////		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+////
+////		String formattedDate = dateFormat.format(date);
+////
+////		model.addAttribute("serverTime", formattedDate);
+//		return "index";
+//	}
 
 	/*
 	 * Define a handler method which will read the senderName and message from
@@ -54,16 +53,18 @@ public class MessageController {
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
 	public ModelAndView sendMessage(Message message) {
 		message.setPostedDate();
-		if (null == message.getSenderName() || null == message.getMessage() || message.getSenderName().isEmpty()
-				|| message.getMessage().isEmpty()) {
+		if(null == message.getSenderName()
+				|| null == message.getMessage()
+				|| message.getSenderName().isEmpty()
+				|| message.getMessage().isEmpty()) {	
 			return new ModelAndView("index");
 		}
 
 		boolean isSaveSuccess = messageRepository.sendMessage(message);
-		if (isSaveSuccess) {
+		if(isSaveSuccess) {
 			return new ModelAndView("redirect:/?success=true");
 		}
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/?success=false");
 	}
 
 	/*
@@ -72,11 +73,13 @@ public class MessageController {
 	 * ModelMap which is an implementation of Map for use when building model data
 	 * for use with views. it should map to the default URL i.e. "/"
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getAllMessages(@RequestParam(required = false) boolean success, ModelMap modelMap) {
+	@RequestMapping(value = "/")
+	public String getAllMessages(@RequestParam(required=false) boolean success, ModelMap modelMap) {
 		List<Message> messageList = messageRepository.getAllMessages();
-		modelMap.put("messageList", messageList);
-		return "index";
+		 if(success) {
+			 modelMap.put("messageList", messageList);
+		 }
+		    return "index";
 	}
 
 }

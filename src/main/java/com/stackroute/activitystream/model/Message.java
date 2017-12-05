@@ -41,7 +41,7 @@ public class Message {
 	 * Used to store senderName.
 	 */
 	@Column(name="SENDER_NAME", nullable = false)
-	String senderName;
+	String sender;
 
 	/**
 	 * Used to store postedDate.
@@ -73,15 +73,15 @@ public class Message {
 	 * @return the senderName
 	 */
 	public String getSenderName() {
-		return senderName;
+		return sender;
 	}
 
 	/**
 	 * @param senderName
 	 *            the senderName to set
 	 */
-	public void setSenderName(String senderName) {
-		this.senderName = senderName;
+	public void setSenderName(String sender) {
+		this.sender = sender;
 	}
 
 	/**
