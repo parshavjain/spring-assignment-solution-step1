@@ -25,11 +25,10 @@
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.username">${MYSQL_USER}</property>
+		<property name="hibernate.connection.password">${MYSQL_PASSWORD}</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3307/activitystream_step1</property>
-		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.connection.url">jdbc:mysql://${MYSQL_HOST}:3306/${MYSQL_DATABASE}</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">false</property>
 		<mapping class="com.stackroute.activitystream.model.Message" />
