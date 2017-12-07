@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
  * @author PARSAV
  *
  */
+@SuppressWarnings("deprecation")
 public class HibernateUtil {
 
 	public static SessionFactory getSessionFactory() {
