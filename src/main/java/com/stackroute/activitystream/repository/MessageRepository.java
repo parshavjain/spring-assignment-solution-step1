@@ -35,12 +35,8 @@ public class MessageRepository {
 	public boolean sendMessage(Message message) {
 		if (null != message && null != session && null != message.getSenderName() && null != message.getMessage()
 				&& !message.getSenderName().isEmpty() && !message.getMessage().isEmpty()) {
-			if (!session.isOpen()) {
-				session = getSession();
-			}
-			if (!session.getTransaction().isActive()) {
-				session.beginTransaction();
-			}
+			session = getSession();
+			session.beginTransaction();
 			session.save(message);
 			session.getTransaction().commit();
 			return true;
@@ -55,14 +51,9 @@ public class MessageRepository {
 	@SuppressWarnings("unchecked")
 	public List<Message> getAllMessages() {
 		// Criteria criteria = session.createCriteria(Message.class);
-		if (!session.isOpen()) {
-			session = getSession();
-		}
-
-		if (!session.getTransaction().isActive()) {
-			session.beginTransaction();
-		}
-		List<Message> list = session.createQuery("from Message").list();
+		session = getSession();
+		session.beginTransaction();
+		List<Message> list = session.createQuery("from Message order by senderName").list();
 		return list;
 	}
 

@@ -11,6 +11,16 @@ import org.hibernate.cfg.Configuration;
  */
 @SuppressWarnings("deprecation")
 public class HibernateUtil {
+	
+	private static final SessionFactory sessionFactory;
+	
+	static {
+		try {
+			sessionFactory = new Configuration().configure().buildSessionFactory();
+		} catch (Throwable ex) {
+			throw new ExceptionInInitializerError(ex);
+		}
+	}
 
 	public static SessionFactory getSessionFactory() {
 		// TODO Auto-generated method stub
@@ -23,11 +33,12 @@ public class HibernateUtil {
 	 * can't be created
 	 */
 	private static SessionFactory configureSessionFactory() {
-		Configuration configuration = new Configuration().configure();
+		/*Configuration configuration = new Configuration().configure();
 		configuration.addAnnotatedClass(com.stackroute.activitystream.model.Message.class);
 		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties());
-		return configuration.buildSessionFactory(builder.build());
+		return configuration.buildSessionFactory(builder.build());*/
+		return sessionFactory;
 	}
 
 }
