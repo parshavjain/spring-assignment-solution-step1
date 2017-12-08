@@ -33,11 +33,6 @@ public class HibernateUtil {
 	 * can't be created
 	 */
 	private static SessionFactory configureSessionFactory() {
-		/*Configuration configuration = new Configuration().configure();
-		configuration.addAnnotatedClass(com.stackroute.activitystream.model.Message.class);
-		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
-				.applySettings(configuration.getProperties());
-		return configuration.buildSessionFactory(builder.build());*/
 		return sessionFactory;
 	}
 
